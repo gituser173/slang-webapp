@@ -9,7 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Date: 3/2/15
  * Time: 2:51 PM
  */
-public interface ExecutionSummaryRepository extends JpaRepository<ExecutionSummaryEntity, Long>{
+public interface ExecutionSummaryRepository extends JpaRepository<ExecutionSummaryEntity, Long> {
 
-    public ExecutionSummaryEntity findByExecutionId(Long executionId);
+    ExecutionSummaryEntity findByExecutionId(Long executionId);
+
 }

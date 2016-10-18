@@ -59,8 +59,8 @@ public class ExecutionsServiceImpl implements ExecutionsService {
 
     private Map<String, Value> getInputs(ExecutionTriggeringVo executionTriggeringVo) {
         Map<String, Value> inputs = new HashMap<>();
-        if(executionTriggeringVo.getRunInputs() != null){
-            for(Map.Entry<String, Object> entry : executionTriggeringVo.getRunInputs().entrySet()){
+        if (executionTriggeringVo.getRunInputs() != null) {
+            for (Map.Entry<String, Object> entry : executionTriggeringVo.getRunInputs().entrySet()) {
                 inputs.put(entry.getKey(), ValueFactory.create((Serializable) entry.getValue()));
             }
         }
@@ -69,8 +69,8 @@ public class ExecutionsServiceImpl implements ExecutionsService {
 
     public Set<SystemProperty> getSystemProperties(ExecutionTriggeringVo executionTriggeringVo) {
         Set<SystemProperty> systemProperties = new HashSet<>();
-        if(executionTriggeringVo.getSystemProperties() != null){
-            for(Map.Entry<String, String> entry : executionTriggeringVo.getSystemProperties().entrySet()){
+        if (executionTriggeringVo.getSystemProperties() != null) {
+            for (Map.Entry<String, String> entry : executionTriggeringVo.getSystemProperties().entrySet()) {
                 systemProperties.add(new SystemProperty(entry.getKey(), entry.getValue()));
             }
         }
@@ -79,7 +79,7 @@ public class ExecutionsServiceImpl implements ExecutionsService {
 
     @Override
     @Transactional(readOnly = true)
-    public ExecutionSummaryWebVo getExecution(Long executionId){
+    public ExecutionSummaryWebVo getExecution(Long executionId) {
         ExecutionSummaryEntity execution = repository.findByExecutionId(executionId);
         if (execution != null) {
             return new ExecutionSummaryWebVo(
@@ -93,7 +93,7 @@ public class ExecutionsServiceImpl implements ExecutionsService {
 
     @Override
     @Transactional
-    public void updateExecution(Long executionId, ExecutionStatus status, String result, String outputs){
+    public void updateExecution(Long executionId, ExecutionStatus status, String result, String outputs) {
         ExecutionSummaryEntity execution = repository.findByExecutionId(executionId);
         execution.setStatus(status);
         execution.setResult(result);
@@ -101,7 +101,7 @@ public class ExecutionsServiceImpl implements ExecutionsService {
         repository.save(execution);
     }
 
-    private Set<SlangSource> getDependencies(String slangDir){
+    private Set<SlangSource> getDependencies(String slangDir) {
 
         Set<SlangSource> slangDependencies = new HashSet<>();
 
@@ -109,7 +109,7 @@ public class ExecutionsServiceImpl implements ExecutionsService {
 
         Set<File> files = getAllFilesRecursively(dir, new HashSet<File>());
 
-        for(File file : files){
+        for (File file : files) {
             slangDependencies.add(SlangSource.fromFile(file));
         }
 
@@ -119,13 +119,13 @@ public class ExecutionsServiceImpl implements ExecutionsService {
     private static Set<File> getAllFilesRecursively(File directory, Set<File> result) {
         File[] filesInDir = directory.listFiles();
         //If it is a file (filesInDir == null in case the directory is a file) - add it to list and return
-        if(filesInDir == null){
+        if (filesInDir == null) {
             result.add(directory);
             return result;
         }
         //If it is a directory - do recursive call for each child
         else {
-            for (File file : filesInDir){
+            for (File file : filesInDir) {
                 result.addAll(getAllFilesRecursively(file, result));
             }
             return result;

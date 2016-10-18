@@ -26,13 +26,13 @@ public class ExecutionServiceTest {
     ExecutionsService service;
 
     @Test
-    public void testGetAllFilesRecursively(){
+    public void testGetAllFilesRecursively() {
 
-//        Set<File> set = new HashSet<>();
-//
-//        Set<File> result = getAllFilesRecursively(new File("C:\\NATASHA_PERSONAL\\books"), set);
-//
-//        System.out.println(result.size());
+        //        Set<File> set = new HashSet<>();
+        //
+        //        Set<File> result = getAllFilesRecursively(new File("C:\\NATASHA_PERSONAL\\books"), set);
+        //
+        //        System.out.println(result.size());
 
     }
 
@@ -40,17 +40,17 @@ public class ExecutionServiceTest {
     static class Configurator {
 
         @Bean
-        public ExecutionsService getExecutionsService(){
+        public ExecutionsService getExecutionsService() {
             return new ExecutionsServiceImpl();
         }
 
         @Bean
-        public ExecutionSummaryRepository getExecutionSummaryRepository(){
+        public ExecutionSummaryRepository getExecutionSummaryRepository() {
             return Mockito.mock(ExecutionSummaryRepository.class);
         }
 
         @Bean
-        public Slang getSlang(){
+        public Slang getSlang() {
             return Mockito.mock(Slang.class);
         }
     }

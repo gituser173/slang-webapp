@@ -30,7 +30,7 @@ public class ScoreWebApplication {
     }
 
     @Bean
-    public Slang getSlang(){
+    public Slang getSlang() {
         return new SlangImpl();
     }
 }

@@ -69,16 +69,28 @@ public class ExecutionSummaryEntity extends AbstractIdentifiable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         ExecutionSummaryEntity that = (ExecutionSummaryEntity) o;
 
-        if (executionId != null ? !executionId.equals(that.executionId) : that.executionId != null) return false;
-        if (outputs != null ? !outputs.equals(that.outputs) : that.outputs != null) return false;
-        if (result != null ? !result.equals(that.result) : that.result != null) return false;
+        if (executionId != null ? !executionId.equals(that.executionId) : that.executionId != null) {
+            return false;
+        }
+        if (outputs != null ? !outputs.equals(that.outputs) : that.outputs != null) {
+            return false;
+        }
+        if (result != null ? !result.equals(that.result) : that.result != null) {
+            return false;
+        }
         //noinspection RedundantIfStatement
-        if (status != that.status) return false;
+        if (status != that.status) {
+            return false;
+        }
 
         return true;
     }

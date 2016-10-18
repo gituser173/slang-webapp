@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
-public class JsonTest  {
+public class JsonTest {
 
     private static Gson gson = new Gson();
 
@@ -50,10 +50,11 @@ public class JsonTest  {
         Assert.assertNotNull(executionTriggeringVo);
     }
 
-    public String getJsonString(Object object){
+    public String getJsonString(Object object) {
         return gson.toJson(object);
     }
 
     @Configuration
-    static class Configurator {}
+    static class Configurator {
+    }
 }
